@@ -27,7 +27,7 @@ class dse_cassandra($version = '2.2.1-1') {
     ensure => 'running',
   }
 
-  Class['packages::oracle_java'] -> Exec['update-alternatives-oracle-java'] -> Apt::Source["datastax"] ->
+  Class['dse_cassandra::oracle_java'] -> Exec['update-alternatives-oracle-java'] -> Apt::Source["datastax"] ->
   Apt::Key["datastax"] -> Package['dse-libtomcat'] -> Package['dse-libsolr'] -> 
   Package['dse-libsqoop'] -> Package['dse-liblog4j'] ->
   Package['dse-libmahout'] -> Package['dse-libhive'] ->
