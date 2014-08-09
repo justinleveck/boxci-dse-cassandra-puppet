@@ -18,7 +18,7 @@ class dse_cassandra::oracle_java($java_distrib = 'jre', $java_version='6u37', $j
   }
 
   exec { 'unpack-java':
-    command     => "tar zxf ${package_name}",
+    command     => "/bin/tar zxf ${package_name}",
     cwd         => "${java_prefix}",
     refreshonly => true,
     notify      => [Exec['rename-java-dir'], Exec['update-alternatives-java']],
